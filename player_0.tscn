@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bsr3uqttu0ljl"]
+
+[ext_resource type="Script" uid="uid://dydy8itbtvkmc" path="res://player_0.gd" id="1_wwceh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jqgjh"]
+albedo_color = Color(3.8023293e-06, 0.654848, 0.2365464, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vf5bc"]
+material = SubResource("StandardMaterial3D_jqgjh")
+radius = 0.44
+height = 4.713
+
+[node name="Player0" type="Node3D" unique_id=168781681]
+script = ExtResource("1_wwceh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1950463890]
+mesh = SubResource("CapsuleMesh_vf5bc")
