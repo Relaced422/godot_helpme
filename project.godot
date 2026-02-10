@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="stargames"
+run/main_scene="uid://dtdjue1l1j7nw"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*uid://c5eurir12wk45"
 
 [physics]
 

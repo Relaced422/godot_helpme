@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhd0u3y510m1a"
-path="res://.godot/imported/top.png-93c825b323d782bed9433092d9cf0cbf.ctex"
+uid="uid://6cq77wyb4w2v"
+path="res://.godot/imported/astronaut_front.png-2b112efd3f98fbebcc01cec86662d50f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/skybox/top.png"
-dest_files=["res://.godot/imported/top.png-93c825b323d782bed9433092d9cf0cbf.ctex"]
+source_file="res://assets/sprites/astronaut_front.png"
+dest_files=["res://.godot/imported/astronaut_front.png-2b112efd3f98fbebcc01cec86662d50f.ctex"]
 
 [params]
 
