@@ -56,16 +56,52 @@ alignment = 1
 custom_minimum_size = Vector2(200, 250)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
+icon_alignment = 1
+
+[node name="LaikaImage" type="TextureRect" parent="VBoxContainer/CenterContainer/CharacterButtons/LaikaButton" unique_id=2140788467]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
 
 [node name="AstronautButton" type="Button" parent="VBoxContainer/CenterContainer/CharacterButtons" unique_id=712806252]
 custom_minimum_size = Vector2(200, 250)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
+icon_alignment = 1
+
+[node name="AstronautImage" type="TextureRect" parent="VBoxContainer/CenterContainer/CharacterButtons/AstronautButton" unique_id=407701059]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
 
 [node name="RobotButton" type="Button" parent="VBoxContainer/CenterContainer/CharacterButtons" unique_id=1984613807]
 custom_minimum_size = Vector2(200, 250)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
+icon_alignment = 1
+
+[node name="RobotImage" type="TextureRect" parent="VBoxContainer/CenterContainer/CharacterButtons/RobotButton" unique_id=782307287]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
 
 [node name="BottomPanel" type="Panel" parent="VBoxContainer" unique_id=893072975]
 custom_minimum_size = Vector2(0, 80)
