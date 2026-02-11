@@ -1,8 +1,14 @@
 [gd_scene format=3 uid="uid://dr6x1y85a80t"]
 
 [ext_resource type="Script" uid="uid://canjbfjptp3r6" path="res://scripts/dice/dice.gd" id="1_27nyo"]
+[ext_resource type="Texture2D" uid="uid://iqd1hh38b3ft" path="res://assets/textures/dobbelsteen.png" id="2_mg5ex"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oi81l"]
+albedo_texture = ExtResource("2_mg5ex")
 
 [sub_resource type="BoxMesh" id="BoxMesh_75r64"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_oi81l")
 
 [node name="Dice" type="Node3D" unique_id=2011096677]
 script = ExtResource("1_27nyo")
