@@ -13,6 +13,11 @@ enum TileType {
 @export var tile_type: TileType = TileType.NORMAL
 @export var tile_index: int = 0
 
+# Sprite indicator (icon above tile)
+var icon_sprite: Sprite3D = null
+var icon_height: float = 0.8
+var icon_size: float = 0.6
+
 # Visual indicator (glowing circle/plane in center)
 var glow_indicator: MeshInstance3D = null
 var glow_height: float = 0.3
@@ -26,10 +31,10 @@ var time_passed: float = 0.0
 # Colors for each tile type
 var tile_colors = {
 	TileType.NORMAL: Color(0.8, 0.8, 0.8, 0.0),        # Light gray
-	TileType.BAD: Color(1.0, 0.2, 0.2, 0.8),           # Red
-	TileType.BLACK_HOLE: Color(0.302, 0.0, 0.502, 1.0),   # Dark purple
-	TileType.SKIP: Color(0.2, 1.0, 0.2, 0.9),          # Green
-	TileType.REVERSE: Color(1.0, 0.3, 0.8, 0.9)        # Pink
+	TileType.BAD: Color(1.0, 0.118, 0.0, 1.0),           # Red
+	TileType.BLACK_HOLE: Color(0.392, 0.002, 0.72, 1.0),   # Dark purple
+	TileType.SKIP: Color(0.2, 1.0, 0.2, 1.0),          # Green
+	TileType.REVERSE: Color(0.0, 0.339, 0.888, 1.0)        # Pink
 }
 
 # Emission intensity for each tile type
@@ -73,26 +78,65 @@ func ensure_glow_exists() -> void:
 func create_glow_indicator() -> void:
 	print("  Creating glow indicator for tile ", tile_index)
 	glow_indicator = MeshInstance3D.new()
-	
-	# Add to scene root instead of self, but position relative to this tile
 	get_tree().get_root().add_child(glow_indicator)
-	
+
 	var cylinder_mesh = CylinderMesh.new()
 	cylinder_mesh.top_radius = glow_size / 2.0
 	cylinder_mesh.bottom_radius = glow_size / 2.0
 	cylinder_mesh.height = 0.1
 	glow_indicator.mesh = cylinder_mesh
-	
-	# Set global position
+
 	glow_indicator.global_position = global_position + Vector3(0, glow_height, 0)
-	
+
+	# 🔽 CREATE SPRITE ICON
+	create_tile_icon()
+
+	var tile_icons = {
+		TileType.BAD: preload("res://assets/sprites/tile_bad.png"),
+		TileType.BLACK_HOLE: preload("res://assets/sprites/tile_blackhole.png"),
+		TileType.SKIP: preload("res://assets/sprites/tile_skip.png"),
+		TileType.REVERSE: preload("res://assets/sprites/tile_reverse.png")
+	}
+
+
 func set_tile_type(type: TileType) -> void:
 	print("  set_tile_type() called on tile ", tile_index, " -> ", TileType.keys()[type])
 	tile_type = type
-	
-	# Make sure glow exists before updating visual
+
 	ensure_glow_exists()
 	update_visual()
+	update_tile_icon()
+
+
+func create_tile_icon() -> void:
+	icon_sprite = Sprite3D.new()
+	get_tree().get_root().add_child(icon_sprite)
+
+	icon_sprite.global_position = global_position + Vector3(0, icon_height, 0)
+	icon_sprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	icon_sprite.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR
+	icon_sprite.pixel_size = 0.005 / icon_size
+	icon_sprite.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+
+	update_tile_icon()
+
+func update_tile_icon() -> void:
+	if not icon_sprite:
+		return
+
+	match tile_type:
+		TileType.NORMAL:
+			icon_sprite.texture = null
+		TileType.BAD:
+			icon_sprite.texture = preload("res://assets/sprites/tile_bad.png")
+		TileType.BLACK_HOLE:
+			icon_sprite.texture = preload("res://assets/sprites/tile_blackhole.png")
+		TileType.SKIP:
+			icon_sprite.texture = preload("res://assets/sprites/tile_skip.png")
+		TileType.REVERSE:
+			icon_sprite.texture = preload("res://assets/sprites/tile_reverse.png")
+
+	icon_sprite.visible = icon_sprite.texture != null
 
 
 func update_visual() -> void:
@@ -140,8 +184,20 @@ func on_player_landed(player) -> void:
 
 func trigger_minigame(player) -> void:
 	print("🎮 Minigame triggered for ", player.player_name)
-
-
+	
+	# Simulate minigame (replace with actual minigame later)
+	await get_tree().create_timer(1.0).timeout
+	
+	# For now, always win and get random item
+	var random_item = ItemData.get_random_item()
+	if player.inventory.add_item(random_item):
+		var item_info = ItemData.get_item_info(random_item)
+		print("  🎁 Won item: ", item_info["name"])
+		
+		# Show notification (optional)
+		if get_tree().root.has_node("Main/UI/GameUI"):
+			var game_ui = get_tree().root.get_node("Main/UI/GameUI")
+			game_ui.show_message("🎁 " + player.player_name + " won " + item_info["name"] + "!")
 func send_to_start(player) -> void:
 	print("🕳️ Black hole! Sending ", player.player_name, " to start")
 	if player.has_method("teleport_to_tile"):

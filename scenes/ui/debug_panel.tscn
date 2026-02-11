@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dg8abty7c1dxo"]
+
+[ext_resource type="Script" uid="uid://bcvbuoq8cwsqn" path="res://scripts/ui/debug_panel.gd" id="1_iihrd"]
+
+[node name="DebugPanel" type="Control" unique_id=1487375002]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_iihrd")
+
+[node name="ToggleButton" type="Button" parent="." unique_id=312855302]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 110.0
+offset_bottom = 50.0
+text = "🐛 Debug"
+
+[node name="Panel" type="Panel" parent="." unique_id=1788480557]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 60.0
+offset_right = 260.0
+offset_bottom = 310.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=931485584]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=730798772]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TitleLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=1988842999]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "🐛 DEBUG MENU"
+horizontal_alignment = 1
+
+[node name="GiveAllItemsButton" type="Button" parent="Panel/MarginContainer/VBoxContainer" unique_id=1599989141]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "🎁 Give All Items"
+
+[node name="ClearItemsButton" type="Button" parent="Panel/MarginContainer/VBoxContainer" unique_id=1110465393]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "🗑️ Clear Items"
+
+[node name="TestMinigameButton" type="Button" parent="Panel/MarginContainer/VBoxContainer" unique_id=414615838]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "🎮 Test Minigame Win"

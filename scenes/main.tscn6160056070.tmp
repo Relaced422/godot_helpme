@@ -511,3 +511,6 @@ transform = Transform3D(0.8926111, 0.39056098, 0.22518352, -0.19663598, -0.11219
 shadow_enabled = true
 
 [node name="Dice" parent="." unique_id=2011096677 instance=ExtResource("10_choun")]
+roll_duration = null
+bounce_height = null
+spin_speed = null
