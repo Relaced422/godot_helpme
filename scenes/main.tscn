@@ -4,12 +4,13 @@
 [ext_resource type="Script" uid="uid://da6gwae78yerj" path="res://scripts/board/board.gd" id="2_85g3d"]
 [ext_resource type="PackedScene" uid="uid://dny04hxwfaaso" path="res://scenes/board/board_tile.tscn" id="3_choun"]
 [ext_resource type="Script" uid="uid://dlwk4bu8ppath" path="res://scripts/board_tile.gd" id="4_choun"]
-[ext_resource type="Texture2D" uid="uid://txo5dav22ovq" path="res://assets/spelbord.png" id="4_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://txo5dav22ovq" path="res://assets/textures/boardTexture.png" id="4_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://56k0b2klp5ai" path="res://assets/skybox/skybox.jpg" id="5_eb6dy"]
 [ext_resource type="Script" uid="uid://c4niqfjiad6g8" path="res://world_environment.gd" id="6_trceg"]
 [ext_resource type="Script" uid="uid://dfuyfinhbc075" path="res://scripts/managers/turn_manager.gd" id="8_jkv2x"]
 [ext_resource type="Script" uid="uid://c4r8ea4vrrb1p" path="res://scripts/ui/game_ui.gd" id="9_85g3d"]
-[ext_resource type="PackedScene" uid="uid://dr6x1y85a80t" path="res://scenes/dice.tscn" id="10_choun"]
+[ext_resource type="PackedScene" uid="uid://dr6x1y85a80t" path="res://scenes/dice/dice.tscn" id="10_choun"]
+[ext_resource type="FontFile" uid="uid://te5niblq2enw" path="res://assets/fonts/PixelCaps!.ttf" id="10_ya4ey"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tngv2"]
 panorama = ExtResource("5_eb6dy")
@@ -439,34 +440,36 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/GameUI/TopPanel/MarginContainer" unique_id=1048166119]
 layout_mode = 2
+alignment = 1
 
 [node name="TurnLabel" type="Label" parent="UI/GameUI/TopPanel/MarginContainer/HBoxContainer" unique_id=1665830454]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("10_ya4ey")
 theme_override_font_sizes/font_size = 24
 text = "Player 1's turn"
 
 [node name="ScoreLabel" type="Label" parent="UI/GameUI/TopPanel/MarginContainer/HBoxContainer" unique_id=1488966197]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("10_ya4ey")
 theme_override_font_sizes/font_size = 24
-text = "Score: 0"
+text = "Score: Coming soon!"
 horizontal_alignment = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="UI/GameUI" unique_id=334514825]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="CenterContainer" type="CenterContainer" parent="UI/GameUI" unique_id=426150569]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="DiceButton" type="Button" parent="UI/GameUI/CenterContainer" unique_id=725020440]
-custom_minimum_size = Vector2(200, 60)
+[node name="DiceButton" type="Button" parent="UI/GameUI/CenterContainer" unique_id=1607190439]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "🎲 Roll Dice (Space)"
 
 [node name="BottomPanel" type="Panel" parent="UI/GameUI" unique_id=1407929429]
 custom_minimum_size = Vector2(0, 80)
@@ -475,6 +478,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -130.0
+offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -483,13 +488,16 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MessageLabel" type="Label" parent="UI/GameUI/BottomPanel/MarginContainer" unique_id=1294496341]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
-text = "Press Space or click Roll Dice to start!"
+theme_override_fonts/font = ExtResource("10_ya4ey")
+theme_override_font_sizes/font_size = 24
+text = "Press Space and roll the Dice to start!"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -499,3 +507,5 @@ transform = Transform3D(0.8926111, 0.39056098, 0.22518352, -0.19663598, -0.11219
 shadow_enabled = true
 
 [node name="Dice" parent="." unique_id=2011096677 instance=ExtResource("10_choun")]
+
+[connection signal="pressed" from="UI/GameUI/CenterContainer/DiceButton" to="." method="_on_dice_button_pressed"]

@@ -11,13 +11,21 @@ config_version=5
 [application]
 
 config/name="stargames"
-run/main_scene="uid://dtdjue1l1j7nw"
+run/main_scene="uid://71rnr46cbdpy"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameManager="*uid://c5eurir12wk45"
+GlobalGameState="*uid://b1yhw38nk4i0i"
+MinigameManager="*uid://ddtgsp474v6dm"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/canvas_textures/default_texture_filter=0
 
 [physics]
 
@@ -25,4 +33,5 @@ GameManager="*uid://c5eurir12wk45"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"

@@ -49,6 +49,7 @@ func spawn_players() -> void:
 		var char_data = GameManager.get_character_data(char_type)
 		
 		# Set properties safely
+		player.player_index = i  # NEW: Set player index
 		player.player_name = "Player " + str(i + 1)
 		player.player_color = char_data.get("color", Color.WHITE)
 		player.character_type = char_type
@@ -143,3 +144,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		if turn_manager and turn_manager.has_method("roll_dice"):
 			turn_manager.roll_dice()
+
+
+func _on_dice_button_pressed() -> void:
+	pass # Replace with function body.

@@ -11,14 +11,13 @@ var already_selected_characters: Array = []
 
 
 func _ready():
-	# Setup button visuals
 	setup_button_images()
 	
-	# Connect buttons
 	laika_button.pressed.connect(_on_character_selected.bind(GameManager.Character.LAIKA))
 	astronaut_button.pressed.connect(_on_character_selected.bind(GameManager.Character.ASTRONAUT))
 	robot_button.pressed.connect(_on_character_selected.bind(GameManager.Character.ROBOT))
 	
+	# No need to sync - already in GameManager
 	update_ui()
 
 
@@ -85,7 +84,6 @@ func update_button_text(button: Button, char_name: String, is_taken: bool) -> vo
 
 
 func _on_character_selected(character: GameManager.Character) -> void:
-	# Store selection
 	GameManager.selected_characters.append(character)
 	already_selected_characters.append(character)
 	
@@ -94,19 +92,15 @@ func _on_character_selected(character: GameManager.Character) -> void:
 	
 	print("Player ", current_player_index + 1, " selected ", char_name)
 	
-	# Move to next player
 	current_player_index += 1
 	
-	# Check if all players selected
+	# Use GameManager.num_players
 	if current_player_index >= GameManager.num_players:
-		# All players selected, show tutorial prompt
 		await get_tree().create_timer(1.0).timeout
 		show_tutorial_prompt()
 	else:
-		# Next player
 		await get_tree().create_timer(0.5).timeout
 		update_ui()
-
 
 func show_tutorial_prompt() -> void:
 	# Create popup dialog

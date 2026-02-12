@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dr6x1y85a80t"]
+
+[ext_resource type="Script" uid="uid://canjbfjptp3r6" path="res://scripts/dice/dice.gd" id="1_27nyo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_75r64"]
+
+[node name="Dice" type="Node3D" unique_id=2011096677]
+script = ExtResource("1_27nyo")
+
+[node name="DiceMesh" type="MeshInstance3D" parent="." unique_id=94005583]
+mesh = SubResource("BoxMesh_75r64")
+
+[node name="Faces" type="Node3D" parent="." unique_id=1174965988]
+
+[node name="Face1" type="Label3D" parent="Faces" unique_id=1471678115]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.51)
+text = "1"
+font_size = 64
+
+[node name="Face2" type="Label3D" parent="Faces" unique_id=1991938284]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -0.51)
+text = "2"
+font_size = 64
+
+[node name="Face3" type="Label3D" parent="Faces" unique_id=361682496]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.51, 0, 0)
+text = "3"
+font_size = 64
+
+[node name="Face4" type="Label3D" parent="Faces" unique_id=1093460897]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.51, 0, 0)
+text = "4"
+font_size = 64
+
+[node name="Face5" type="Label3D" parent="Faces" unique_id=992181543]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.51, 0)
+text = "5"
+font_size = 64
+
+[node name="Face6" type="Label3D" parent="Faces" unique_id=388097914]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.51, 0.51)
+text = "6"
+font_size = 64

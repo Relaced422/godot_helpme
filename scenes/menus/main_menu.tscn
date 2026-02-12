@@ -1,0 +1,370 @@
+[gd_scene format=3 uid="uid://71rnr46cbdpy"]
+
+[ext_resource type="FontFile" uid="uid://te5niblq2enw" path="res://assets/fonts/PixelCaps!.ttf" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://1wltsjdljgkr" path="res://scripts/menus/main_menu.gd" id="1_fu7sn"]
+[ext_resource type="VideoStream" uid="uid://hp5kvxwnukok" path="res://assets/videos/MainMenuVideo1.ogv" id="2_7vrkn"]
+[ext_resource type="AudioStream" uid="uid://qioidh3nrm50" path="res://assets/audio/(Track 1) Opening Theme.mp3" id="4_jix8l"]
+[ext_resource type="Script" uid="uid://dwd7asg568tms" path="res://scripts/menus/audio_control.gd" id="5_glbon"]
+[ext_resource type="Script" uid="uid://inei71l8w5ei" path="res://scripts/menus/full_screen_control.gd" id="6_nlkkf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06t4h"]
+bg_color = Color(0.87585306, 0.2632043, 0.60094655, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(0, 0, 0, 0.21176471)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fu7sn"]
+bg_color = Color(0.8745098, 0.2627451, 0.6, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(0, 0, 0, 0.21176471)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vrkn"]
+bg_color = Color(0.18431373, 0.18431373, 0.53333336, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(0, 0, 0, 0.21176471)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.5)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_06t4h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glbon"]
+bg_color = Color(0.18431373, 0.18431373, 0.53333336, 0.41568628)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_jix8l"]
+color = Color(0.8745098, 0.2627451, 0.6, 1)
+thickness = 10
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_glbon"]
+color = Color(0.18431373, 0.18431373, 0.53333336, 1)
+thickness = 10
+
+[node name="MainMenu" type="Control" unique_id=159051018]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_fu7sn")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=704668182]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_7vrkn")
+autoplay = true
+expand = true
+loop = true
+
+[node name="MainButtons" type="VBoxContainer" parent="." unique_id=186345095]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -214.5
+offset_top = -101.5
+offset_right = 214.5
+offset_bottom = 167.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Button" type="Button" parent="MainButtons" unique_id=1669151335]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_06t4h")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_06t4h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fu7sn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7vrkn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_06t4h")
+text = "Start Game"
+
+[node name="Button2" type="Button" parent="MainButtons" unique_id=1584516734]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_06t4h")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_06t4h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fu7sn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7vrkn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_06t4h")
+text = "Options"
+
+[node name="Button3" type="Button" parent="MainButtons" unique_id=307175687]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_06t4h")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_06t4h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fu7sn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7vrkn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_06t4h")
+text = "Exit"
+
+[node name="options" type="Panel" parent="." unique_id=114597148]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -322.0
+offset_top = -115.0
+offset_right = 322.0
+offset_bottom = 313.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_glbon")
+
+[node name="Label" type="Label" parent="options" unique_id=408507727]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_06t4h")
+theme_override_font_sizes/font_size = 32
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="options" unique_id=283517552]
+stream = ExtResource("4_jix8l")
+autoplay = true
+parameters/looping = true
+
+[node name="BackButton" type="Button" parent="options" unique_id=299753370]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -146.0
+offset_top = -84.0
+offset_right = 154.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_06t4h")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_06t4h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fu7sn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7vrkn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_06t4h")
+text = "Back"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="options" unique_id=1155571857]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -231.0
+offset_top = -66.0
+offset_right = 231.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 53
+
+[node name="HBoxContainer" type="HBoxContainer" parent="options/VBoxContainer" unique_id=563349391]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="options/VBoxContainer/HBoxContainer" unique_id=499899085]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_06t4h")
+text = "Music Volume"
+
+[node name="AudioControl" type="HSlider" parent="options/VBoxContainer/HBoxContainer" unique_id=917992331]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/slider = SubResource("StyleBoxLine_jix8l")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_glbon")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_glbon")
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("5_glbon")
+audio_bus_name = "Master"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="options/VBoxContainer" unique_id=622671339]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="options/VBoxContainer/HBoxContainer2" unique_id=1228656992]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_06t4h")
+text = "Full Screen"
+
+[node name="FullScreenControl" type="CheckButton" parent="options/VBoxContainer/HBoxContainer2" unique_id=1125041519]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_06t4h")
+script = ExtResource("6_nlkkf")
+
+[node name="PlayerCountPanel" type="Panel" parent="." unique_id=1518732670]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -214.5
+offset_right = 214.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PlayerCountPanel" unique_id=191139300]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_top = -50.0
+offset_right = 88.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_06t4h")
+theme_override_font_sizes/font_size = 20
+text = "With how many players are you playing?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerCountPanel" unique_id=1871668913]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 66.0
+grow_horizontal = 2
+
+[node name="PlayerButton2" type="Button" parent="PlayerCountPanel/VBoxContainer" unique_id=994286589]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_06t4h")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_06t4h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fu7sn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7vrkn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_06t4h")
+text = "2 Players"
+
+[node name="PlayerButton3" type="Button" parent="PlayerCountPanel/VBoxContainer" unique_id=332802510]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_06t4h")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_06t4h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fu7sn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7vrkn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_06t4h")
+text = "3 players"
+
+[node name="ComingSoon" type="Button" parent="PlayerCountPanel/VBoxContainer" unique_id=248041116]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_06t4h")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_06t4h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fu7sn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7vrkn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_06t4h")
+text = "More players coming soon!"
+
+[node name="BackButton" type="Button" parent="PlayerCountPanel/VBoxContainer" unique_id=1444339507]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_06t4h")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_06t4h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fu7sn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7vrkn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_06t4h")
+text = "Back"
+
+[connection signal="pressed" from="MainButtons/Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MainButtons/Button2" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MainButtons/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="options/BackButton" to="." method="_on_back_options_pressed"]
+[connection signal="value_changed" from="options/VBoxContainer/HBoxContainer/AudioControl" to="options/VBoxContainer/HBoxContainer/AudioControl" method="_on_value_changed"]
+[connection signal="toggled" from="options/VBoxContainer/HBoxContainer2/FullScreenControl" to="options/VBoxContainer/HBoxContainer2/FullScreenControl" method="_on_toggled"]
+[connection signal="pressed" from="PlayerCountPanel/VBoxContainer/BackButton" to="." method="_on_back_player_count_pressed"]

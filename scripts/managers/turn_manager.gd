@@ -109,27 +109,6 @@ func _on_player_movement_finished(player) -> void:
 		await get_tree().create_timer(0.5).timeout
 		end_turn()
 
-
-## Handle tile effects
-func _on_tile_effect(player, tile_type) -> void:
-	match tile_type:
-		BoardTileScript.TileType.SKIP:
-			# Mark next turn to be skipped
-			skip_next_turn[player] = true
-			print("⏭️ ", player.player_name, " will skip their next turn!")
-		
-		BoardTileScript.TileType.REVERSE:
-			# This was already handled during movement in a reversed way
-			# But we can add a visual effect here
-			print("🔄 ", player.player_name, " hit a reverse tile!")
-		
-		BoardTileScript.TileType.BLACK_HOLE:
-			print("🕳️ ", player.player_name, " fell into a black hole!")
-		
-		BoardTileScript.TileType.BAD:
-			print("😈 ", player.player_name, " landed on a bad tile! Minigame time!")
-
-
 ## End current player's turn
 func end_turn() -> void:
 	var current_player = get_current_player()
@@ -149,3 +128,32 @@ func get_current_player():
 	if players.is_empty():
 		return null
 	return players[current_player_index]
+
+## Handle tile effects
+func _on_tile_effect(player, tile_type) -> void:
+	match tile_type:
+		BoardTileScript.TileType.BAD:
+			# Check if player has shield
+			if player.has_shield:
+				print("🛡️ ", player.player_name, "'s shield blocked the bad tile!")
+				player.has_shield = false
+				return  # Skip minigame
+			
+			print("😈 ", player.player_name, " landed on a bad tile! Minigame time!")
+		
+		BoardTileScript.TileType.SKIP:
+			# Check skip immunity
+			if player.has_skip_immunity:
+				print("⚡ ", player.player_name, " is immune to skip!")
+				player.has_skip_immunity = false
+				return
+			
+			# Mark next turn to be skipped
+			skip_next_turn[player] = true
+			print("⏭️ ", player.player_name, " will skip their next turn!")
+		
+		BoardTileScript.TileType.REVERSE:
+			print("🔄 ", player.player_name, " hit a reverse tile!")
+		
+		BoardTileScript.TileType.BLACK_HOLE:
+			print("🕳️ ", player.player_name, " fell into a black hole!")

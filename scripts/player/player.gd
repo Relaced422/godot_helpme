@@ -7,10 +7,17 @@ class_name Player
 @export var movement_speed: float = 10.0
 @export var character_type: GameManager.Character = GameManager.Character.LAIKA
 
+# Player index for inventory
+var player_index: int = 0
+
 # Current state
 var current_tile_index: int = 0
 var is_moving: bool = false
 var current_direction: Vector3 = Vector3.FORWARD
+
+# Active effects
+var has_shield: bool = false
+var has_skip_immunity: bool = false
 
 # References
 var board: Node3D = null
@@ -231,3 +238,27 @@ func set_character(character: GameManager.Character) -> void:
 	if sprite:
 		load_character_sprites()
 		setup_sprite()
+
+# NEW: Inventory helper functions
+func add_item(item: GameManager.ItemType) -> void:
+	GameManager.add_item_to_player(player_index, item)
+
+func use_item(item: GameManager.ItemType) -> bool:
+	if GameManager.has_item(player_index, item):
+		GameManager.remove_item_from_player(player_index, item)
+		apply_item_effect(item)
+		return true
+	return false
+
+func get_inventory() -> Array:
+	return GameManager.get_player_inventory(player_index)
+
+func apply_item_effect(item: GameManager.ItemType) -> void:
+	match item:
+		GameManager.ItemType.SHIELD:
+			has_shield = true
+			print("🛡️ Shield activated!")
+		
+		GameManager.ItemType.SKIP_IMMUNITY:
+			has_skip_immunity = true
+			print("⚡ Skip immunity activated!")
