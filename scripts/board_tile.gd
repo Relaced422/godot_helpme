@@ -161,9 +161,10 @@ func on_player_landed(player) -> void:
 	
 	match tile_type:
 		TileType.BAD:
-			var outcome = MinigameManager.play_minigame(player)
-			if outcome == MinigameManager.Outcome.WIN:
-				MinigameManager.give_reward(player)
+			pass
+			#var outcome = MinigameManager.play_minigame(player)
+			#if outcome == MinigameManager.Outcome.WIN:
+				#MinigameManager.give_reward(player)
 		
 		TileType.BLACK_HOLE:
 			if player.has_method("teleport_to_tile"):

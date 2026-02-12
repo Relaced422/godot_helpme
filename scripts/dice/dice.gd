@@ -5,9 +5,9 @@ class_name Dice
 @onready var faces: Node3D = $Faces if has_node("Faces") else null
 
 # Animation settings
-@export var roll_duration: float = 1.0
+@export var roll_duration: float = 1.5
 @export var bounce_height: float = 3.0
-@export var spin_speed: float = 720.0  # Degrees per second
+@export var spin_speed: float = 200.0  # Degrees per second
 
 var is_rolling: bool = false
 var final_value: int = 1

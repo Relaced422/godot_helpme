@@ -5,10 +5,10 @@ extends Control
 @onready var astronaut_button: Button = $VBoxContainer/CenterContainer/CharacterButtons/AstronautButton
 @onready var robot_button: Button = $VBoxContainer/CenterContainer/CharacterButtons/RobotButton
 @onready var selected_label: Label = $VBoxContainer/BottomPanel/SelectedLabel
+@export var character_name_font_size: int = 50  # Add this at the top of your script
 
 var current_player_index: int = 0
 var already_selected_characters: Array = []
-
 
 func _ready():
 	setup_button_images()
@@ -71,9 +71,9 @@ func update_ui() -> void:
 	robot_button.disabled = GameManager.Character.ROBOT in already_selected_characters
 	
 	# Update button text to show if taken
-	update_button_text(laika_button, "Laika", GameManager.Character.LAIKA in already_selected_characters)
-	update_button_text(astronaut_button, "Astronaut", GameManager.Character.ASTRONAUT in already_selected_characters)
-	update_button_text(robot_button, "Robot", GameManager.Character.ROBOT in already_selected_characters)
+	update_button_text(laika_button, "", GameManager.Character.LAIKA in already_selected_characters)
+	update_button_text(astronaut_button, "", GameManager.Character.ASTRONAUT in already_selected_characters)
+	update_button_text(robot_button, "", GameManager.Character.ROBOT in already_selected_characters)
 
 
 func update_button_text(button: Button, char_name: String, is_taken: bool) -> void:
@@ -81,6 +81,9 @@ func update_button_text(button: Button, char_name: String, is_taken: bool) -> vo
 		button.text = "\n\n\n" + char_name + "\n(Taken)"
 	else:
 		button.text = "\n\n\n" + char_name
+	
+	# Set font size
+	button.add_theme_font_size_override("font_size", character_name_font_size)
 
 
 func _on_character_selected(character: GameManager.Character) -> void:

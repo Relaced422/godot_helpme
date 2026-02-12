@@ -1,7 +1,18 @@
 [gd_scene format=3 uid="uid://cm083hflv8aom"]
 
 [ext_resource type="Script" uid="uid://bn4yfnpel07fj" path="res://scripts/character_select.gd" id="1_oablf"]
+[ext_resource type="Texture2D" uid="uid://bqci1wabbjn4b" path="res://assets/textures/characterSelection.png" id="2_5qjx0"]
 [ext_resource type="FontFile" uid="uid://te5niblq2enw" path="res://assets/fonts/PixelCaps!.ttf" id="2_rptr7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5qjx0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xae3q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u125y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i56mv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kbvb4"]
 
 [node name="CharacterSelect" type="Control" unique_id=713058941]
 layout_mode = 3
@@ -12,29 +23,30 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oablf")
 
-[node name="Background" type="ColorRect" parent="." unique_id=1646381357]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1.4904449e-05, 0, 1.4538933, 1)
+[node name="CharacterSelection" type="Sprite2D" parent="." unique_id=643047937]
+position = Vector2(961.50006, 540.00006)
+scale = Vector2(0.5464652, 0.43225807)
+texture = ExtResource("2_5qjx0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=127445983]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 121.0
+offset_bottom = 121.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 100
 
 [node name="TopPanel" type="Panel" parent="VBoxContainer" unique_id=20261107]
+y_sort_enabled = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5qjx0")
 
 [node name="PlayerInfoLabel" type="Label" parent="VBoxContainer/TopPanel" unique_id=457151993]
+z_index = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -49,15 +61,20 @@ vertical_alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer" unique_id=1655715222]
 layout_mode = 2
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
 
 [node name="CharacterButtons" type="HBoxContainer" parent="VBoxContainer/CenterContainer" unique_id=909229509]
+custom_minimum_size = Vector2(1300, 0)
 layout_mode = 2
+theme_override_constants/separation = 160
 alignment = 1
 
 [node name="LaikaButton" type="Button" parent="VBoxContainer/CenterContainer/CharacterButtons" unique_id=1589876405]
-custom_minimum_size = Vector2(200, 250)
+custom_minimum_size = Vector2(330, 320)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xae3q")
 icon_alignment = 1
 
 [node name="LaikaImage" type="TextureRect" parent="VBoxContainer/CenterContainer/CharacterButtons/LaikaButton" unique_id=2140788467]
@@ -72,9 +89,10 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="AstronautButton" type="Button" parent="VBoxContainer/CenterContainer/CharacterButtons" unique_id=712806252]
-custom_minimum_size = Vector2(200, 250)
+custom_minimum_size = Vector2(330, 320)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_u125y")
 icon_alignment = 1
 
 [node name="AstronautImage" type="TextureRect" parent="VBoxContainer/CenterContainer/CharacterButtons/AstronautButton" unique_id=407701059]
@@ -89,9 +107,10 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="RobotButton" type="Button" parent="VBoxContainer/CenterContainer/CharacterButtons" unique_id=1984613807]
-custom_minimum_size = Vector2(200, 250)
+custom_minimum_size = Vector2(330, 340)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i56mv")
 icon_alignment = 1
 
 [node name="RobotImage" type="TextureRect" parent="VBoxContainer/CenterContainer/CharacterButtons/RobotButton" unique_id=782307287]
@@ -108,6 +127,7 @@ stretch_mode = 5
 [node name="BottomPanel" type="Panel" parent="VBoxContainer" unique_id=893072975]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_kbvb4")
 
 [node name="SelectedLabel" type="Label" parent="VBoxContainer/BottomPanel" unique_id=1589359118]
 layout_mode = 1
@@ -116,6 +136,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_rptr7")
 theme_override_font_sizes/font_size = 20
 text = "Select a character..."
 horizontal_alignment = 1
